@@ -16,3 +16,9 @@ Yang diminta cuman prototyping, nanti proses produksi sama pihak X-Camp dari PT.
 ##### Bagian atasnya buat nimbang:
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/master/32643%20atas.jpg)
+
+
+##### Tampilan di platform Flexiot:
+micronya make NodeMCU ESP32S
+
+![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/Overview/Baca%20sensor%20ke%20flexiot.PNG)
