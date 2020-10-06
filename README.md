@@ -1,4 +1,4 @@
-# Digiyandu
+# Digiyandu - Smart Baby Scale
 ### IoT Makers Development Program by PT.XL Axiata Tbk 2020
 
 Masih dikerjain ... smart baby scale integrated with Flexiot Cloud by Axiata Bhd
