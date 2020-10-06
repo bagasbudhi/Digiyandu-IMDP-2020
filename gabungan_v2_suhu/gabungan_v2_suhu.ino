@@ -25,6 +25,12 @@ unsigned long lastPublish = 0;
 
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
+//jarak
+const int trigPin = 5;
+const int echoPin = 4;
+// defines variables
+long duration;
+int distance;
 
 // Update these with values suitable for your network.
 const char* ssid = "Masayu";
@@ -107,7 +113,9 @@ void setup() {
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   //client.setCallback(callback);
-
+  //jarak
+  setup_jarak();
+  
   Serial.println(F("DHT11 test!"));
   dht.begin();
   //suhu
@@ -131,6 +139,8 @@ void loop() {
     lastPublish = millis();
   }
 
+  //jarak
+  jarak();
 }
 
 void publish_message(const char* message){
@@ -180,7 +190,7 @@ void readSensor() {
   float t = mlx.readObjectTempC();//33;//dht.readTemperature();
   float h = 45;//dht.readHumidity();
   float w = 13.9;
-  float he = 87.8;
+  float he = distance;
   // Check if any reads failed and exit early (to try again).
   if (isnan(h) || isnan(t) ) {
     Serial.println(F("Failed to read from DHT sensor!"));
