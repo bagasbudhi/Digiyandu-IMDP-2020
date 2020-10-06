@@ -9,7 +9,7 @@ Pengennya gini
 
 Yang diminta cuman prototyping, nanti proses produksi sama pihak X-Camp dari PT.XL Axita Tbk
 
-### Update Prototyping
+### Update Prototyping:
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/master/32644.jpg)
 
@@ -18,7 +18,7 @@ Yang diminta cuman prototyping, nanti proses produksi sama pihak X-Camp dari PT.
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/master/32643%20atas.jpg)
 
 
-### Tampilan di platform Flexiot:
+### Tampilan di platform Flexiot milik PT.XL Axiata Tbk:
 micronya make NodeMCU ESP32S
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/Overview/Baca%20sensor%20ke%20flexiot.PNG)
