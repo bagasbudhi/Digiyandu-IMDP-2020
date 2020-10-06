@@ -19,6 +19,6 @@ Yang diminta cuman prototyping, nanti proses produksi sama pihak X-Camp dari PT.
 
 
 ### Tampilan di platform Flexiot milik PT.XL Axiata Tbk:
-micronya make NodeMCU ESP32S
+micronya make NodeMCU-32S
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/Overview/Baca%20sensor%20ke%20flexiot.PNG)
