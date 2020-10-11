@@ -1,0 +1,1041 @@
+{
+	"info": {
+		"_postman_id": "5864c54a-8e02-4425-afb4-9f5079807d5f",
+		"name": "IOT-dev-portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Management",
+			"item": [
+				{
+					"name": "API Management",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea390904-9009-4aab-9630-f7b44699d514",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"access token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "801bd87b-47a4-4560-917f-8faea0dcd6bf",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Secret",
+								"value": "{{X-secret}}",
+								"type": "text"
+							},
+							{
+								"key": "accept",
+								"value": " application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/applicationmgt/authenticate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"applicationmgt",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User Mangement",
+			"item": [
+				{
+					"name": "User Management",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "936db98d-4707-406f-8434-aba2920923c8",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"X-IoT-JWT\", jsonData[\"X-IoT-JWT\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\": \"{{username}}\",\r\n\"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usermgt/v1/authenticate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usermgt",
+								"v1",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Device Management",
+			"item": [
+				{
+					"name": "Devices",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bbe0127f-50e7-40c9-9666-c4798223adcc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}",
+								"type": "text"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceDefinitionId\": 0,\n    \"brand\": \"string\",\n    \"type\": \"string\",\n    \"model\": \"string\",\n    \"deviceCategory\": \"string\",\n    \"userId\": 0,\n    \"deviceParentId\": \"string\",\n    \"macAddress\": \"string\",\n    \"name\": \"string\",\n    \"location\": \"string\",\n    \"additionalParams\": \"string\",\n    \"otherParameters\": \"string\",\n    \"featured\": \"string\",\n    \"nonDeletable\": \"string\",\n    \"pullInterval\": 0,\n    \"zoneId\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Device",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\": 0,\r\n    \"deviceDefinitionId\": 0,\r\n    \"brand\": \"\",\r\n    \"type\": \"\",\r\n    \"model\": \"v1\",\r\n    \"deviceCategory\": \"BOTH\",\r\n    \"userId\": 0,\r\n    \"deviceParentId\": \"\",\r\n    \"macAddress\": \"\",\r\n    \"name\": \"\",\r\n    \"location\": null,\r\n    \"locationId\": 0,\r\n    \"additionalParams\": \"\",\r\n    \"otherParameters\": \"\",\r\n    \"featured\": \"false\",\r\n    \"nonDeletable\": \"false\",\r\n    \"pullInterval\": 0,\r\n    \"zoneId\": \"Asia/Colombo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices/{deviceId}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices",
+								"{deviceId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device by DeviceID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d287e2ae-67bc-4d67-a077-ae0afdaf980d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices/{deviceId}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices",
+								"{deviceId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "dfd189d3-b082-46b1-b131-8689a205b64f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "userId",
+								"value": "65890"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices/{deviceId}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices",
+								"{deviceId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Actions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "43c84b8d-1f02-41f3-b96c-4004b885a30d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices/{deviceId}/actions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices",
+								"{deviceId}",
+								"actions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Events",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "84dc33d5-9cd4-4043-8168-5dc49a93eee0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices/{deviceId}/events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices",
+								"{deviceId}",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Last Status",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "eb57cb8a-a143-45bf-aa4a-8fa0d7dd7db4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userdevicemgt/v1/devices/{deviceId}/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicemgt",
+								"v1",
+								"devices",
+								"{deviceId}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Device Control",
+			"item": [
+				{
+					"name": "Execute Action",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"operation\": \"deviceControl\",\r\n  \"deviceId\": 0,\r\n  \"actionName\": \"u\",\r\n  \"userId\": 0,\r\n  \"actionParameters\": {\r\n    \"test\": \"10\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userdevicecontrol/v1/devices/executeaction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userdevicecontrol",
+								"v1",
+								"devices",
+								"executeaction"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Scenes Management",
+			"item": [
+				{
+					"name": "Get Scenes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cd2f8984-73de-43fb-8902-c01b5cb3c35f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}",
+								"type": "text"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userscenemgt/v1/scenes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userscenemgt",
+								"v1",
+								"scenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Execute Scene",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n\"type\": \"manual\",\r\n\"userId\": 0,\r\n\"sceneId\": 0\r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userscenemgt/v1/scenes/execute",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userscenemgt",
+								"v1",
+								"scenes",
+								"execute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Scene",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"userId\": 0,\r\n    \"feaured\": true,\r\n    \"icon\": \"light\",\r\n    \"executionInterval\":null,\r\n    \"connectedSceneId\":0,\r\n    \"type\": \"device\",\r\n    \"device\": {\r\n        \"inDeviceId\": 0,\r\n        \"eventName\": \"E1\",\r\n        \"stateName\": \"none\",\r\n        \"alwaysOn\": false,\r\n        \"effectiveDate\": \"2019-02-27\",\r\n    \t\"expireDate\": \"2020-02-27\",\r\n        \"evaluationCriteria\": \"expression\",\r\n        \"evaluationValues\": {\r\n            \"expression\": \"$$para1 < 5 \"\r\n        }\r\n    },\r\n    \"actions\": [\r\n        {\r\n            \"sequence\": 1,\r\n            \"action\": \"sms\",\r\n            \"externalServiceData\": {\r\n                \"message\": \"13286\",\r\n                \"receiverAddress\": \"switch\"\r\n                \r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userscenemgt/v1/scenes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userscenemgt",
+								"v1",
+								"scenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Scene",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"\",\n    \"userId\": 0,\n    \"feaured\": true,\n    \"icon\": \"light\",\n    \"type\": \"device\",\n    \"device\": {\n        \"inDeviceId\": 0,\n        \"eventName\": \"\",\n        \"stateName\": \"none\",\n        \"alwaysOn\": true,\n        \"evaluationCriteria\": \"expression\",\n        \"evaluationValues\": {\n            \"expression\": \"\"\n        }\n    },\n    \"actions\": [\n        {\n            \"sequence\": 1,\n            \"action\": \"device\",\n            \"externalServiceData\": {\n                \"deviceId\": \"0\",\n                \"actionName\": \"\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/userscenemgt/v1/scenes/{sceneId}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userscenemgt",
+								"v1",
+								"scenes",
+								"{sceneId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Scene",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/userscenemgt/v1/scenes/{sceneId}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"userscenemgt",
+								"v1",
+								"scenes",
+								"{sceneId}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Data Management",
+			"item": [
+				{
+					"name": "Device History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://iot.dialog.lk/developer/api/datamgt/v1/user/devicehistory?eventName&deviceIds&startDate&endDate&noOfEvents&zoneId&eventParams",
+							"protocol": "https",
+							"host": [
+								"iot",
+								"dialog",
+								"lk"
+							],
+							"path": [
+								"developer",
+								"api",
+								"datamgt",
+								"v1",
+								"user",
+								"devicehistory"
+							],
+							"query": [
+								{
+									"key": "eventName",
+									"value": null
+								},
+								{
+									"key": "deviceIds",
+									"value": null
+								},
+								{
+									"key": "startDate",
+									"value": null
+								},
+								{
+									"key": "endDate",
+									"value": null
+								},
+								{
+									"key": "noOfEvents",
+									"value": null
+								},
+								{
+									"key": "zoneId",
+									"value": null
+								},
+								{
+									"key": "eventParams",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Application Management",
+			"item": [
+				{
+					"name": "Device Definitions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0ed8f21a-80fd-4975-a68c-cd771828e9d6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "brand",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "type",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/applicationmgt/v1/device-definitions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"applicationmgt",
+								"v1",
+								"device-definitions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Notification Management",
+			"item": [
+				{
+					"name": "Get notification Token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d008d7d1-2e53-48b7-8bc3-62553caa2449",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a5ea2f1-6b25-4b42-a8c7-4f0c6c70a550",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"ws-access token\", jsonData[\"ws-access token\"]);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"type": "text",
+								"value": "{{X-IoT-JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/notificationmgt/v1/access-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notificationmgt",
+								"v1",
+								"access-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Event Subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access token}}"
+							},
+							{
+								"key": "X-IoT-JWT",
+								"value": "{{X-IoT-JWT}}"
+							},
+							{
+								"key": "X-WS-access token ",
+								"value": "{{ws-access token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/notificationmgt/v1/event-subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notificationmgt",
+								"v1",
+								"event-subscription"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
