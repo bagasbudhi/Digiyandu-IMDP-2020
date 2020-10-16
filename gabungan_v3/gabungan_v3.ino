@@ -19,6 +19,8 @@ const int HX711_sck = 18; //mcu > HX711 sck pin
 
 //HX711 constructor:
 HX711_ADC LoadCell(HX711_dout, HX711_sck);
+double hasil;
+double hasil_fix;
 
 const int calVal_calVal_eepromAdress = 0;
 long t;
@@ -207,7 +209,7 @@ void readSensor() {
   //sensor calculation
   float t = mlx.readObjectTempC();//33;//dht.readTemperature();
   float h = 45;//dht.readHumidity();
-  float w = 13.9;
+  float w = hasil_fix;
   float he = distance;
   // Check if any reads failed and exit early (to try again).
   if (isnan(h) || isnan(t) ) {

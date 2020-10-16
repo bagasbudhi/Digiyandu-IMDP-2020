@@ -74,9 +74,10 @@ void loop_berat(){
   // get smoothed value from the dataset:
   if (newDataReady) {
     if (millis() > t + serialPrintInterval) {
-      float i = LoadCell.getData();
+      hasil = LoadCell.getData();
+      hasil_fix = hasil/10;
       Serial.print("Load_cell output val: ");
-      Serial.println(i);
+      Serial.println(hasil_fix);
       newDataReady = 0;
       t = millis();
     }
