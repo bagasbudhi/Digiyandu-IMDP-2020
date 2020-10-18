@@ -4,6 +4,7 @@ By: Bagas Budhi Permana | Bagaspermana88@gmail.com
 
 */
 
+
 /*
 GENERIC SDK FOR ESP
 Add ESP8266 and PubSubClient libraries into your arduino libraries forlder
@@ -16,13 +17,12 @@ update the send_event function and do_actions function with respect your require
 #include <ArduinoJson.h>
 #include "DHT.h"
 
-#include <HX711_ADC.h>
+#include <HX711_ADC.h> // library Timbangan
 #include <EEPROM.h>
 
 //suhu
-
 #include <Wire.h>
-#include <Adafruit_MLX90614.h>
+#include <Adafruit_MLX90614.h> //library suhu sensor MLX90614
 
 //pin sensor berat
 const int HX711_dout = 19; //mcu > HX711 dout pin
@@ -30,6 +30,7 @@ const int HX711_sck = 18; //mcu > HX711 sck pin
 
 //HX711 constructor:
 HX711_ADC LoadCell(HX711_dout, HX711_sck);
+
 double hasil;
 double hasil_fix;
 
@@ -45,22 +46,24 @@ DHT dht(DHTPIN, DHTTYPE);
 
 unsigned long lastPublish = 0;
 
-
-
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
-//jarak
+//variable sensor jarak
 const int trigPin = 5;
 const int echoPin = 4;
+
 // defines variables
 long duration;
 int distance;
 
 // Update these with values suitable for your network.
-const char* ssid = "Resta Maharani";
-const char* password = "babylion1709";
+const char* ssid = "Resta Maharani"; // isi dengan nama WiFi
+const char* password = "babylion1709"; // isi dengan password WiFi
 
-//Backend credentials
+//Backend credentials --- liat di account Flexiot
+/*
+Account Flexiot Bagas
+*/
 const char* mqtt_server = "mqtt.flexiot.xl.co.id";
 String DEVICE_SERIAL = "7360319863815522" ; //update the device serial according to the serial given by the consumer portal 
 const char* EVENT_TOPIC = "nodemcu/bagas_nodemcu/v5/common";
