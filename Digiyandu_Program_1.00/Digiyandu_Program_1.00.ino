@@ -1,3 +1,9 @@
+/* Program device prototype Digiyandu IMDP 2020 
+
+By: Bagas Budhi Permana | Bagaspermana88@gmail.com
+
+*/
+
 /*
 GENERIC SDK FOR ESP
 Add ESP8266 and PubSubClient libraries into your arduino libraries forlder
