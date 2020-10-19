@@ -33,7 +33,7 @@ HX711_ADC LoadCell(HX711_dout, HX711_sck);
 
 double hasil;
 double hasil_fix;
-
+double bacaan_suhu;
 const int calVal_calVal_eepromAdress = 0;
 long t;
 
@@ -137,7 +137,7 @@ void reconnect() {
  
 void setup() {
   Serial.begin(115200);
-  setup_wifi();
+  //setup_wifi(); // uncomment kalo mau offline
   client.setServer(mqtt_server, 1883);
   
   //client.setCallback(callback);
@@ -147,7 +147,8 @@ void setup() {
   //sensor berat
   setup_berat();
  
-  Serial.println(F("DHT11 test!"));
+  Serial.println(F("===========|| DIGIYANDU IMDP 2020 ||=========="));
+  delay(1000);
   dht.begin();
   //suhu
   mlx.begin(); 
@@ -156,20 +157,20 @@ void setup() {
 
 void loop() {
 
-  if(WiFi.status() != WL_CONNECTED){
+ /* if(WiFi.status() != WL_CONNECTED){
     setup_wifi();  
   }
   if (WiFi.status()== WL_CONNECTED && !client.connected()) {
     reconnect();
-  }
+  } 
 
-  client.loop();
+  client.loop(); // uncomment kalo mau offline
 
   if (millis() - lastPublish >= PUB_INTERVAL * 1000UL) {
     readSensor();
     lastPublish = millis();
   }
-
+*/
   //jarak
   jarak();
   loop_berat();
@@ -220,7 +221,7 @@ void do_actions(const char* message){
 void readSensor() {
   //sensor calculation
   float t = mlx.readObjectTempC();//33;//dht.readTemperature();
-  float h = 45;//dht.readHumidity();
+  float h = 45;//dht.readHumidity(); //tidak dipakai
   float w = hasil_fix;
   float he = distance;
   // Check if any reads failed and exit early (to try again).
