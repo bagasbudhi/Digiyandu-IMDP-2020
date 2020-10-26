@@ -22,3 +22,8 @@ Yang diminta cuman prototyping, nanti proses produksi sama pihak X-Camp dari PT.
 micronya make NodeMCU-32S
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/Overview/Baca%20sensor%20ke%20flexiot.PNG)
+
+
+Prototype test on Public Health Center (Puskesmas) in Surakarta
+
+![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/master/IMG-20201014-WA0000.jpg)
