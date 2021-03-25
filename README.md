@@ -1,25 +1,25 @@
 # Digiyandu - Smart Baby Scale
 ### IoT Makers Development Program by PT.XL Axiata Tbk 2020
 
-Masih dikerjain ... smart baby scale integrated with Flexiot Cloud by Axiata Bhd
+Smart baby scale integrated with Flexiot Cloud by Axiata Bhd
 Tools : `Flexiot`,`Arduino`,`Sensors`,`Android Studio`
 Pengennya gini
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/Overview/IND%20-%20Poster%20-%20%5BJOG%5D%20-%20Group%203%20-%20DigiYandu.png)
 
-Yang diminta cuman prototyping, nanti proses produksi sama pihak X-Camp dari PT.XL Axita Tbk
+What is requested is only prototyping, later the production process will be carried out by X-Camp from PT.XL Axita Tbk
 
 ### Update Prototyping:
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/master/32644.jpg)
 
-### Bagian atasnya buat nimbang:
+### the top to weigh the load:
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/master/32643%20atas.jpg)
 
 
-### Tampilan di platform Flexiot milik PT.XL Axiata Tbk:
-micronya make NodeMCU-32S
+### Display on the Flexiot platform owned by PT.XL Axiata Tbk:
+using a NodeMCU-32S microcontroller
 
 ![Image of Yaktocat](https://github.com/bagasbudhi/Digiyandu-IMDP-2020/blob/Overview/Baca%20sensor%20ke%20flexiot.PNG)
 
